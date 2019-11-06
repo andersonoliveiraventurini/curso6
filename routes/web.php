@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/rota', function () {
     abort(403, 'O tempo se esgotou, não será possível enviar os documentos.');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
