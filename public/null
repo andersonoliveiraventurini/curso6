@@ -1,0 +1,5 @@
+aluno::all();
+sala::all();
+salas::all();
+Sala::all();
+User::all();
