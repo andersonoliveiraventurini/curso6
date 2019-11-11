@@ -37,6 +37,15 @@ Route::post('salas','SalaController@store');
 // Mostra um registro
 Route::get('salas/{sala}','SalaController@show');
 
+// Editar um registro
+Route::get('salas/{sala}/edit','SalaController@edit');
+
+// Envio de valores para edição de um registro
+Route::put('salas/{sala}','SalaController@update');
+
+// Deletar um registro
+Route::delete('salas/{sala}','SalaController@destroy');
+
 // final rotas sala
 
 

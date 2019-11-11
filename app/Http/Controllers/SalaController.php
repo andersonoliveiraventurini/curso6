@@ -40,4 +40,23 @@ class SalaController extends Controller
     {
         return view('sala.show', compact('sala'));
     }
+
+    public function edit(Sala $sala)
+    {
+        return view('sala.edit', compact('sala'));
+    }
+
+    public function update(Request $request, Sala $sala)
+    {
+        $sala->update($request->except('_token'));
+
+        return redirect('salas/'.$sala->id);
+    }
+
+    public function destroy(Sala $sala)
+    {
+        $sala->delete();
+
+        return redirect('salas');
+    }
 }
