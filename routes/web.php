@@ -25,4 +25,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // rotas referentes a sala
 
+// listagem
 Route::get('salas','SalaController@index');
+
+// criação
+Route::get('salas/create','SalaController@create');
+
+// salva inserção de registro
+Route::post('salas','SalaController@store');
+
+// Mostra um registro
+Route::get('salas/{sala}','SalaController@show');
+
+// final rotas sala
+
+
+
+
+
+
