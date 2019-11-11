@@ -15,7 +15,7 @@
         @forelse($salas as $s)
             <tr>
                 <td>
-                    <a href="/sala/{{$s->id}}" target="_blank"> {{$s->id}}</a>
+                    <a href="/salas/{{$s->id}}" target="_blank"> {{$s->id}}</a>
                 </td>
                 <td>{{$s->nome}}</td>
                 <td>{{$s->qtdAlunos}}</td>
