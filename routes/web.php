@@ -26,25 +26,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 // rotas referentes a sala
 
 // listagem
-Route::get('salas','SalaController@index');
+//Route::get('salas','SalaController@index');
 
 // criação
-Route::get('salas/create','SalaController@create');
+//Route::get('salas/create','SalaController@create');
 
 // salva inserção de registro
-Route::post('salas','SalaController@store');
+//Route::post('salas','SalaController@store');
 
 // Mostra um registro
-Route::get('salas/{sala}','SalaController@show');
+//Route::get('salas/{sala}','SalaController@show');
 
 // Editar um registro
-Route::get('salas/{sala}/edit','SalaController@edit');
+//Route::get('salas/{sala}/edit','SalaController@edit');
 
 // Envio de valores para edição de um registro
-Route::put('salas/{sala}','SalaController@update');
+//Route::put('salas/{sala}','SalaController@update');
 
 // Deletar um registro
-Route::delete('salas/{sala}','SalaController@destroy');
+//Route::delete('salas/{sala}','SalaController@destroy');
+
+
+Route::resource('salas','SalaController');
 
 // final rotas sala
 
