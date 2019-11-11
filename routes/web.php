@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste', function () {
-    return view('home');
-});
-
 Route::get('/rota', function () {
     abort(403, 'O tempo se esgotou, não será possível enviar os documentos.');
 });
@@ -26,3 +22,7 @@ Route::get('/rota', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// rotas referentes a sala
+
+Route::get('salas','SalaController@index');
