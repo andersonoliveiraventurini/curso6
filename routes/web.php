@@ -21,7 +21,7 @@ Route::get('/rota', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home-2', 'HomeController@index')->name('home'); 
 
 // rotas referentes a sala
 
@@ -47,7 +47,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::delete('salas/{sala}','SalaController@destroy');
 
 
-Route::resource('salas','SalaController');
+Route::resource('salas','SalaController')->names([
+    'index' => 'salas.indice',
+    'create' => 'salas.criar',
+    'store' => 'salas.salvar',
+    'show' => 'salas.ver',
+    'update' => 'salas.atualizar',
+    'destroy' => 'salas.remover'
+]);
+
+Route::get('/salas-seed',"SalaController@seed");
+
 
 // final rotas sala
 

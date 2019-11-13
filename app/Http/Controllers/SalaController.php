@@ -38,6 +38,8 @@ class SalaController extends Controller
 
     public function show(Sala $sala)
     {
+        dd($sala);
+        $sala = Sala::findOrFail($sala);
         return view('sala.show', compact('sala'));
     }
 
@@ -58,5 +60,14 @@ class SalaController extends Controller
         $sala->delete();
 
         return redirect('salas');
+    }
+
+    function seed(){
+        \Artisan::call('db:seed',[
+            '--class' => 'SalasTableSeeder',
+            '--force' => true
+        ]);
+
+        return redirect()->route('salas.indice');
     }
 }
