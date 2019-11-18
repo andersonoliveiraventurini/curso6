@@ -11,6 +11,8 @@
             <td>Código</td>
             <td>Nome</td>
             <td>Quantidade de alunos</td>
+            <td>Ativa</td>
+            <td>Projetor</td>
         </tr>
         @forelse($salas as $s)
             <tr>
@@ -19,6 +21,8 @@
                 </td>
                 <td>{{$s->nome}}</td>
                 <td>{{$s->qtdAlunos}}</td>
+                <td>{{$s->ativo}}</td>
+                <td>{{$s->projetor}}</td>
             </tr>
         @empty
         <tr>

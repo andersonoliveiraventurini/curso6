@@ -11,11 +11,11 @@ class SalaController extends Controller
 {
     public function index()
     {
-        $salas = Sala::paginate(10);
-        $salas = DB::table('salas')->get();
+        //$salas = Sala::paginate(10);
+        //$salas = DB::table('salas')->get();
         
         //PLUCK
-        $salas = Sala::where('qtdAlunos','>=',20)->orWhere('qtdAlunos',40)->get(['nome','id'])->paginate(10);
+        $salas = Sala::where('qtdAlunos','>',0)->paginate(10);
         //dd($salas);
 
         //CHUNK
@@ -30,6 +30,55 @@ class SalaController extends Controller
         
         // passa a variável salas para a view
         // através de compact
+        return view('sala.index', compact('salas'));
+    }
+
+    public function scope(){
+
+        //$salas = Sala::TemAlunos()->paginate(10);
+        //dd( Sala::where('qtdalunos',1)->doesntExist());
+
+
+        //SELECT
+        // nome, qtadalunos as QUANTIDADE from salas where (qtdalunos>0 and qtdAlunos <10) or
+        // qtdalunos =50
+        /*dd(DB::table('salas')->select('id','nome', 'qtdalunos as Quantidade')->where([
+            ['qtdAlunos','>',0], ['qtdAlunos','<',10]
+        ])->orWhere('nome', 'LIKE', 'Dr.%')->get());*/
+
+
+        //INSERT 
+        dd(DB::table('salas')->insertGetId([
+            'nome'=>'Dr. Educorp 2',
+            'qtdAlunos' => 15,
+            'projetor'=> 1,
+            'ativo'=>0,
+            'usuario_id'=>1
+        ]));
+
+        //UPDATE
+        /*dd(DB::table('salas')->where('id',102)->update([
+            'nome'=>'Dr. Educorp 2'
+        ]));*/
+
+        //UPDATEORINSERT
+        /*dd(DB::table('salas')->updateOrInsert(
+            ['id'=> 102],
+            ['nome'=>'Dr. Educorp 3',
+            'qtdAlunos' => 150,
+            'projetor'=> 1,
+            'ativo'=>1,
+            'usuario_id'=>1
+        ]));*/
+
+        //DELETE
+        //dd(DB::table('salas')->where('id',101)->delete());
+        
+        dd(DB::table('salas')->truncate());
+        
+        
+
+
         return view('sala.index', compact('salas'));
     }
 

@@ -21,7 +21,9 @@ Route::get('/rota', function () {
 
 Auth::routes();
 
-Route::get('/home-2', 'HomeController@index')->name('home'); 
+Route::get('/home-2', 'HomeController@index')->name('home');
+
+
 
 // rotas referentes a sala
 
@@ -57,7 +59,7 @@ Route::resource('salas','SalaController')->names([
 ]);
 
 Route::get('/salas-seed',"SalaController@seed");
-
+Route::get("/salas-scope", "SalaController@scope");
 
 // final rotas sala
 
