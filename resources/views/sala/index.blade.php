@@ -4,7 +4,7 @@
 
 @section('content')
 <br/>
-    <h3>Lista das salas - {{count($salas)}}</h3>
+    <h3>Lista das salas - {{$salas->total()}} no total</h3>
     <p><a href="{{route('salas.criar')}}" target="_blank">Adicionar sala</a></p>
     <table class='table'> 
         <tr>
@@ -26,5 +26,6 @@
         </tr>        
         @endforelse
         </table> 
+        {{$salas->links()}}
 @endsection
 

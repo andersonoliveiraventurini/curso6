@@ -4,12 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Sala;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\DB;
+use DB;
 
 class SalaController extends Controller
 {
     public function index()
     {
-        $salas = Sala::all();
+        $salas = Sala::paginate(10);
+        $salas = DB::table('salas')->get();
+        
+        //PLUCK
+        $salas = Sala::where('qtdAlunos','>=',20)->orWhere('qtdAlunos',40)->get(['nome','id'])->paginate(10);
+        //dd($salas);
+
+        //CHUNK
+        /*$salas = DB::table('salas')->where('qtdAlunos',20)->orderBy('id')->chunk(2, function($salas){
+            dump($salas);
+        });        
+        
+        dd($salas);*/
+        //SELECT * FROM salas where qtdAlunos=20 or limit 1
+
         // return view('home')->with('salasPrincipais', $salas);
         
         // passa a variável salas para a view
