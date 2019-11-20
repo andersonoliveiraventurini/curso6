@@ -15,6 +15,10 @@ class Sala extends Model
     // declara o que não será enviado
     //protected $guarded = ['ativo'];
 
+    public function lousa(){
+        return $this->hasOne(Lousa::class);
+    }
+
     public function scopeTemAlunos($query){
         return $query->where('qtdalunos','>',0);
     }
@@ -28,10 +32,14 @@ class Sala extends Model
         //$a = [0=>'desativado', 1=>'ativo'];return $a[$atributo];
     }
 
-    public function getProjetorAttibute($atributo){return [
-        0 => 'Não',
-        1 => 'Sim'
-    ][$atributo];
+    public function getProjetorAttribute($attr){
+        //$nomes = [0=>'Não',1=>'Sim'];
+        //return $nomes[$attr];
+
+        if($attr==1)
+            return "SIM";
+        else
+            return "NAO";
     }
     
 }

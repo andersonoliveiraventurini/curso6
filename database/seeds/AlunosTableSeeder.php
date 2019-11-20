@@ -13,10 +13,12 @@ class AlunosTableSeeder extends Seeder
     {
         \App\Models\Aluno::create([
                 'nome' => 'Aluno 1',
+                'curso_id' => 1,
                 'matricula' => 256478
         ]);
         \App\Models\Aluno::create([
                 'nome' => 'Aluno 2',
+                'curso_id' => 1,
                 'matricula' => 3355448             
         ]);
     }

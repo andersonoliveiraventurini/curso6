@@ -13,6 +13,7 @@
             <td>Quantidade de alunos</td>
             <td>Ativa</td>
             <td>Projetor</td>
+            <td>Lousa</td>
         </tr>
         @forelse($salas as $s)
             <tr>
@@ -23,6 +24,7 @@
                 <td>{{$s->qtdAlunos}}</td>
                 <td>{{$s->ativo}}</td>
                 <td>{{$s->projetor}}</td>
+                <td>{{$s->lousa['modelo']}}</td>
             </tr>
         @empty
         <tr>
