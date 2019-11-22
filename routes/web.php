@@ -21,7 +21,7 @@ Route::get('/rota', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home-2', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
