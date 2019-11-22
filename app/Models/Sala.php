@@ -19,6 +19,10 @@ class Sala extends Model
         return $this->hasOne(Lousa::class);
     }
 
+    public function professores(){
+        return $this->belongsToMany(Professor::class);
+    }
+
     public function scopeTemAlunos($query){
         return $query->where('qtdalunos','>',0);
     }
