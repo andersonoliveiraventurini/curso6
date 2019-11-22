@@ -21,6 +21,10 @@ Route::get('/rota', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('perfil', function () {
+    // Somente usuários já verificados podem acessar...
+})->middleware('verified');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
