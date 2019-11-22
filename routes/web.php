@@ -19,7 +19,7 @@ Route::get('/rota', function () {
     abort(403, 'O tempo se esgotou, não será possível enviar os documentos.');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home-2', 'HomeController@index')->name('home');
 
