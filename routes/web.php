@@ -53,14 +53,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::delete('salas/{sala}','SalaController@destroy');
 
 
-Route::resource('salas','SalaController')->names([
-    'index' => 'salas.indice',
-    'create' => 'salas.criar',
-    'store' => 'salas.salvar',
-    'show' => 'salas.ver',
-    'update' => 'salas.atualizar',
-    'destroy' => 'salas.remover'
-]);
+Route::middleware(['auth'])->group(Function(){
+    // aqui dentro só podem ser acessadas se usuário estiver logado
+
+    Route::resource('salas','SalaController')->names([
+        'index' => 'salas.indice',
+        'create' => 'salas.criar',
+        'store' => 'salas.salvar',
+        'show' => 'salas.ver',
+        'update' => 'salas.atualizar',
+        'destroy' => 'salas.remover'
+    ]);
+});
+
+
 
 Route::get('/salas-seed',"SalaController@seed");
 Route::get("/salas-scope", "SalaController@scope");
