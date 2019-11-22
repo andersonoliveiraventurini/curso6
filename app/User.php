@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\softDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
+    use softDeletes;
 
     protected $table = 'usuarios';
 

@@ -48,13 +48,13 @@ class SalaController extends Controller
 
 
         //INSERT 
-        dd(DB::table('salas')->insertGetId([
+        DB::table('salas')->insertGetId([
             'nome'=>'Dr. Educorp 2',
             'qtdAlunos' => 15,
             'projetor'=> 1,
             'ativo'=>0,
             'usuario_id'=>1
-        ]));
+        ]);
 
         //UPDATE
         /*dd(DB::table('salas')->where('id',102)->update([
@@ -74,7 +74,7 @@ class SalaController extends Controller
         //DELETE
         //dd(DB::table('salas')->where('id',101)->delete());
         
-        dd(DB::table('salas')->truncate());
+       // dd(DB::table('salas')->truncate());
         
         
 
@@ -96,6 +96,8 @@ class SalaController extends Controller
 
         //dd($_REQUEST);
 
+        $this->authorize('create', Sala::class);
+
         Sala::create($request->except('_token'));
 
         return redirect('salas');
@@ -103,8 +105,7 @@ class SalaController extends Controller
 
     public function show(Sala $sala)
     {
-        dd($sala);
-        $sala = Sala::findOrFail($sala);
+        //$sala = Sala::findOrFail($sala);
         return view('sala.show', compact('sala'));
     }
 
@@ -122,6 +123,8 @@ class SalaController extends Controller
 
     public function destroy(Sala $sala)
     {
+        $this->authorize('delete', $sala);
+
         $sala->delete();
 
         return redirect('salas');

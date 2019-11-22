@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::post('salas','SalaController@store');
 
 // Mostra um registro
-//Route::get('salas/{sala}','SalaController@show');
+//Route::get('salas/{sala}','SalaController@show')->middleware('can:view,sala');
 
 // Editar um registro
 //Route::get('salas/{sala}/edit','SalaController@edit');
@@ -53,7 +53,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::delete('salas/{sala}','SalaController@destroy');
 
 
-Route::middleware(['auth'])->group(Function(){
+Route::middleware(['auth','can:view,sala'])->group(Function(){
     // aqui dentro só podem ser acessadas se usuário estiver logado
 
     Route::resource('salas','SalaController')->names([
@@ -65,7 +65,6 @@ Route::middleware(['auth'])->group(Function(){
         'destroy' => 'salas.remover'
     ]);
 });
-
 
 
 Route::get('/salas-seed',"SalaController@seed");
