@@ -6,6 +6,7 @@ use App\Models\Sala;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class SalaController extends Controller
 {
@@ -98,7 +99,14 @@ class SalaController extends Controller
 
         $this->authorize('create', Sala::class);
 
+        request()->validate([
+            'nome' => 'required|min:3',
+            'qtdAlunos' => 'integer|required'
+        ]);
+
         Sala::create($request->except('_token'));
+
+        Session::flash('flash_message', 'Sala Criada!');
 
         return redirect('salas');
     }

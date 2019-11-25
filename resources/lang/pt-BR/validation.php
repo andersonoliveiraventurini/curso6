@@ -38,7 +38,7 @@ return [
     'digits_between'       => 'O campo :attribute deve conter entre :min a :max dígitos.',
     'dimensions'           => 'O valor informado para o campo :attribute não é uma dimensão de imagem válida.',
     'distinct'             => 'O campo :attribute contém um valor duplicado.',
-    'email'                => 'O campo :attribute não contém um endereço de email válido.',
+    'email'                => 'O campo :attribute não contém um endereço de e-mail válido.',
     'ends_with'            => 'The :attribute must end with one of the following: :values',
     'exists'               => 'O valor selecionado para o campo :attribute é inválido.',
     'file'                 => 'O campo :attribute deve conter um arquivo.',
@@ -146,6 +146,7 @@ return [
 
     'attributes' => [
         'address'               => 'endereço',
+        'qtdAlunos'             => 'quantidade de alunos',
         'age'                   => 'idade',
         'body'                  => 'conteúdo',
         'city'                  => 'cidade',

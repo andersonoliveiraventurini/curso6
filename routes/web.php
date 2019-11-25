@@ -53,7 +53,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::delete('salas/{sala}','SalaController@destroy');
 
 
-Route::middleware(['auth','can:view,sala'])->group(Function(){
+Route::middleware(['auth'])->group(Function(){
     // aqui dentro só podem ser acessadas se usuário estiver logado
 
     Route::resource('salas','SalaController')->names([

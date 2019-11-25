@@ -8,6 +8,11 @@
     @can('create', App\Models\Sala::class)
         <p><a href="{{route('salas.criar')}}" target="_blank">Adicionar sala</a></p>
     @endcan
+    @if(Session::has('flash_message'))
+        <div class="alert alert-success">
+            {{Session::get('flash_message')}}
+        </div>
+    @endif
     <table class='table'> 
         <tr>
             <td>Código</td>
